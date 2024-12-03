@@ -8,7 +8,7 @@
 import Foundation
 
 //let MAX = 100
-//for i in 1..<MAX {
+//for i in 1...MAX {
 //    // if multiple of 3 then print Fizz
 //    if i % 15 == 0 {
 //        print("FizzBuzz\t", terminator: "")
@@ -41,7 +41,7 @@ struct FizzBuzzAlgModel: Identifiable {
     var moduloSymbol: String = "%"
     let ifStatement: (String, String) -> String
     let elseIfStatement: (String, String) -> String
-    let elseStatement: (String, String) -> String
+    let elseStatement: (String) -> String
     
     var actualFizzBuzzCode: String {
         "FizzBuzz in \(name)"
