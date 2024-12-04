@@ -44,6 +44,37 @@ struct FizzBuzzAlgModel: Identifiable {
     let elseStatement: (String) -> String
     
     var actualFizzBuzzCode: String {
-        "FizzBuzz in \(name)"
+        let mod3 = "i \(moduloSymbol) 3 \(equality) 0"
+        let codeFizz = printString("Fizz")
+        
+        let mod5 = "i \(moduloSymbol) 5 \(equality) 0"
+        let codeBuzz = printString("Buzz")
+        
+        let mod15 = "i \(moduloSymbol) 15 \(equality) 0"
+        let codeFizzBuzz = printString("FizzBuzz")
+        
+        let printInt = printInt()
+        
+        let codeInLoop = """
+        \(ifStatement(mod15, codeFizzBuzz)) \(elseIfStatement(mod3, codeFizz.indent())) \(elseIfStatement(mod5, codeBuzz.indent())) \(elseStatement(printInt.indent()))
+        """
+        
+        let mainCode = """
+        \(maxConstDef)
+        
+        \(loopWrapper(codeInLoop))
+        """
+        
+        var versionString = ""
+        
+        if let versionNumber {
+            versionString = " implementation Version \(versionNumber)"
+        }
+        
+        return """
+        \(commentCode("FizzBuzz\(versionString) is implemented in the \(name) programming language."))
+        \(imports)
+        \(boilerWrapper(mainCode))
+        """
     }
 }
